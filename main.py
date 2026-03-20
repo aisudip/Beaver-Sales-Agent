@@ -10,7 +10,7 @@ from database.engine import db_engine
 from database.init_db import init_database
 from models.state import OrderState
 from orchestrator.orchestrator import PaperSalesOrchestratorAgent
-from tools.agent_tools import generate_financial_report
+from database.helper_fns import generate_financial_report
 from utils.logging import get_logger
 
 # If not running inside the project venv, re-exec with the correct Python
