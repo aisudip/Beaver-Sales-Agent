@@ -1,6 +1,7 @@
 # catalog/catalog.py — Paper supplies catalog and lookup utilities
 from typing import Dict, List, Optional
 
+# List containing the different kinds of papers
 paper_supplies: List[Dict] = [
     # Paper Types (priced per sheet unless specified)
     {"item_name": "A4 paper",                         "category": "paper",        "unit_price": 0.05},
