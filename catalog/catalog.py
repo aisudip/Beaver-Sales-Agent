@@ -1,4 +1,5 @@
 # catalog/catalog.py — Paper supplies catalog and lookup utilities
+
 from typing import Dict, List, Optional
 
 # List containing the different kinds of papers
@@ -58,7 +59,6 @@ paper_supplies: List[Dict] = [
     {"item_name": "220 gsm poster paper",             "category": "specialty",    "unit_price": 0.35},
 ]
 
-
 def find_catalog_item(item_name: str) -> Optional[Dict]:
     """Return catalog entry for item_name (case-insensitive), or None."""
     return next(
@@ -72,3 +72,5 @@ def get_canonical_name(item_name: str) -> Optional[str]:
     """Return canonical catalog name for item_name, or None if not found."""
     item = find_catalog_item(item_name)
     return item["item_name"] if item else None
+
+

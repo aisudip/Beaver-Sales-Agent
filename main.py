@@ -1,24 +1,10 @@
 # main.py — Entry point: run_test_scenarios()
 import os
 import sys
-
-# If not running inside the project venv, re-exec with the correct Python
-_venv_python = os.path.join(os.path.dirname(__file__), ".venv312", "Scripts", "python.exe")
-if os.path.exists(_venv_python) and os.path.abspath(sys.executable) != os.path.abspath(_venv_python):
-    import subprocess
-    sys.exit(subprocess.call([_venv_python] + sys.argv))
-
 import time
-
-try:
-    import dotenv
-    dotenv.load_dotenv()
-except ImportError:
-    pass  # dotenv not installed; rely on environment variables already set
-
 import pandas as pd
-from smolagents import OpenAIServerModel
 
+from smolagents import OpenAIServerModel
 from config import MODEL_TEMPERATURE, MODEL_SEED, OPENAI_BASE_URL, OPENAI_MODEL_ID, TEST_SAMPLE_CSV
 from database.engine import db_engine
 from database.init_db import init_database
@@ -26,6 +12,18 @@ from models.state import OrderState
 from orchestrator.orchestrator import PaperSalesOrchestratorAgent
 from tools.agent_tools import generate_financial_report
 from utils.logging import get_logger
+
+# If not running inside the project venv, re-exec with the correct Python
+_venv_python = os.path.join(os.path.dirname(__file__), ".venv312", "Scripts", "python.exe")
+if os.path.exists(_venv_python) and os.path.abspath(sys.executable) != os.path.abspath(_venv_python):
+    import subprocess
+    sys.exit(subprocess.call([_venv_python] + sys.argv))
+
+try:
+    import dotenv
+    dotenv.load_dotenv()
+except ImportError:
+    pass  # dotenv not installed; rely on environment variables already set
 
 logger = get_logger(__name__)
 
@@ -69,6 +67,8 @@ def run_test_scenarios():
 
     results = []
     for idx, row in quote_requests_sample.iterrows():
+        if idx > 1: # for quicker testing, only run the first 2 requests. Will be removed for final submission
+            break
         request_date = row["request_date"].strftime("%Y-%m-%d")
 
         logger.info("=== Request %d ===", idx + 1)
