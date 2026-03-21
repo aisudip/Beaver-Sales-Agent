@@ -53,24 +53,33 @@ Respond as a json:
 """
 
 QUOTE_GENERATOR_PROMPT = """\
-1. First identify items in {order_items} and check if it is available in the catalog
-2. For each such item that is available in the catalog, analyze the following for the item
-    - Inventory position for the item
-    - Quote history for the item
-    - {customer_request}
-3. Create a price map  as follows
-    - For each of the item get the best match on
-        - Unit Price
-        - Unit
-        - Discount
-Return JSON::
+The catalog with standard unit prices is:
+{catalog_items}
+
+You are generating a personalised quote for the following customer request:
+{customer_request}
+
+For each item in {order_items} that is available in the catalog:
+
+1. The unit_price is the standard catalog price for that item — look it up from the catalog above.
+   Do NOT invent or extract a unit_price from quote history.
+
+2. Determine the discount to apply by:
+   - Checking the inventory position for the item
+   - Searching the quote history for similar orders (matching event type, order size, job type, or item)
+   - Analysing the customer request context to judge the appropriate discount
+   - If no relevant quote history exists, apply a 0% discount
+
+3. Return the discount as a decimal fraction (e.g. 0.10 for 10%) or percentage string (e.g. "10%").
+
+Return JSON:
 - order_id : {order_id}
 - order_items: list of objects
     - item_name should match item_name in {order_items}
-    - unit_price
-    - discount
+    - unit_price (standard catalog price for the item — must be non-zero if item is in catalog)
+    - discount (fraction or percentage string, 0 if no discount applies)
     - price_matching_confidence: High | Medium | Low
-    - item_status: "Quote Price Updated" (if quote_price has been updated) | "Quote Price Not Available" (if quote_price is 0)
+    - item_status: "Quote Price Updated" (if unit_price is non-zero) | "Quote Price Not Available" (if item not in catalog)
     - output_message: short message on the process output
 """
 

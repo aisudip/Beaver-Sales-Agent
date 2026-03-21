@@ -132,6 +132,7 @@ class PaperSalesOrchestratorAgent(ToolCallingAgent):
                     order_items=updated_stock_resp["order_items"],
                     customer_request=customer_request,
                     order_id=order_id,
+                    catalog_items=paper_supplies,
                 ),
                 "quote_generation_agent",
             )
