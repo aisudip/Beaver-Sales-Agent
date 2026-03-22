@@ -66,9 +66,10 @@ def run_test_scenarios():
     orchestrator = PaperSalesOrchestratorAgent(model, order_state)
 
     results = []
+    financial_reports = []
     for idx, row in quote_requests_sample.iterrows():
-        if idx > 1: # for quicker testing, only run the first 2 requests. Will be removed for final submission
-            break
+        #if idx > 1: # for quicker testing, only run the first 2 requests. Will be removed for final submission
+            #break
         request_date = row["request_date"].strftime("%Y-%m-%d")
 
         logger.info("=== Request %d ===", idx + 1)
@@ -78,7 +79,7 @@ def run_test_scenarios():
         logger.info("Inventory Value: $%.2f", current_inventory)
 
         request_with_date = f"{row['request']} (Date of request: {request_date})"
-        response = orchestrator.process_order(request_with_date.replace('"', "in"))
+        response, financial_report = orchestrator.process_order(request_with_date.replace('"', "in"))
 
         report = generate_financial_report(request_date)
         current_cash = report["cash_balance"]
@@ -96,6 +97,8 @@ def run_test_scenarios():
             "response": response,
         })
 
+        financial_reports.append(financial_report)
+
         time.sleep(1)
         logger.info("================== END OF RUN %d ================================", idx)
 
@@ -107,7 +110,9 @@ def run_test_scenarios():
     logger.info("order_state: %s", order_state.model_dump_json(indent=2))
 
     pd.DataFrame(results).to_csv("test_results.csv", index=False)
-    return results
+    pd.DataFrame(financial_reports).to_csv("financial_reports.csv", index=False)
+
+    return results, financial_reports
 
 
 if __name__ == "__main__":

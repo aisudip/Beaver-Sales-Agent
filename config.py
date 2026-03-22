@@ -1,9 +1,9 @@
 # config.py — All constants and configuration values
 
 DB_PATH = "sqlite:///munder_difflin.db"
-QUOTE_REQUESTS_CSV = "two_quote_requests.csv"
+QUOTE_REQUESTS_CSV = "quote_requests.csv"
 QUOTES_CSV = "quotes.csv"
-TEST_SAMPLE_CSV = "two_quote_requests_sample.csv"
+TEST_SAMPLE_CSV = "quote_requests_sample.csv"
 INITIAL_DATE = "2025-01-01"
 
 OPENAI_MODEL_ID = "gpt-4o-mini"

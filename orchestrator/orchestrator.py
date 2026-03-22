@@ -15,6 +15,7 @@ from prompts.templates import (
     ORDER_FULFILLER_PROMPT,
     ORDER_PROCESSOR_PROMPT,
     QUOTE_GENERATOR_PROMPT,
+    FINANCIAL_REPORT_PROMPT,
 )
 from tools.agent_tools import (
     check_item_inventory,
@@ -173,9 +174,32 @@ class PaperSalesOrchestratorAgent(ToolCallingAgent):
                 EXECUTIVE_SUMMARY_PROMPT.format(final_response=final_response),
                 "summary",
             )
-        except AgentStageError:
+        except (AgentStageError, ValueError) as e:
             summary_response = "Summary unavailable"
+            logger.error("summary extraction failed: %s", e)
 
         final_response["Order Summary"] = summary_response
         logger.debug("order_state.orders: %s", self.order_state.orders)
-        return json.dumps(final_response, indent=2)
+
+        # Stage 6: Financial reporting (non-fatal)
+        try:
+            financial_report = self._run_agent_stage(
+                self,
+                FINANCIAL_REPORT_PROMPT.format(
+                    order_id=final_response["order_id"],
+                    request_date=final_response.get("request_date", ""),
+                ),
+                "financial_report",
+            )
+        except (AgentStageError, ValueError) as e:
+            financial_report = {}
+            logger.error("financial report extraction failed: %s", e)
+
+        final_response_dump = json.dumps(final_response, indent=2)
+        try:
+            financial_report_parsed = parse_llm_json(financial_report) if isinstance(financial_report, str) else financial_report
+            financial_report_dump = json.dumps(financial_report_parsed, indent=2)
+        except (ValueError, TypeError):
+            financial_report_dump = json.dumps({}, indent=2)
+
+        return final_response_dump, financial_report_dump

@@ -1,0 +1,15 @@
+0
+"{
+  ""order_id"": ""ORD-0001"",
+  ""as_of_date"": ""2025-04-01"",
+  ""cash_balance"": 45059.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 50000.0
+}"
+"{
+  ""order_id"": ""ORD-0002"",
+  ""as_of_date"": ""2025-04-03"",
+  ""cash_balance"": 45056.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49997.0
+}"

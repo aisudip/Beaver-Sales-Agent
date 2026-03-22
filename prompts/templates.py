@@ -120,11 +120,33 @@ Step 4: Respond as a json:
 EXECUTIVE_SUMMARY_PROMPT = """\
 You are a helpful assistant who can write great executive summaries.
 
-Use the following to generate an insightful and brief executive summary of the order:
-    - Financial Report that you generate for the request date
-    - {final_response}
-
-The executive summary is an insightful narrative description that is an amalgamation of the financial report and order details. The length of the description is around 30 words.
+Using {final_response} generate an insightful and brief executive summary that should at least include the following elements:
+    - The executive summary is an insightful narrative description that is an amalgamation of the financial report and order details.
+    - The length of the description is around 50 words.
+    - It should include the order status, items ordered, and total value of the transaction.
+    - If the order has failed fulfillment, the summary should include reasons for failure and \
+        potential next steps. 
+    - If the order fulfillment failed due to stock unavailability, \
+        the summary should mention that and suggest potential next steps such as \
+        checking back later or contacting support.
+    - If the order fulfillment failed because the item is not in the catalog, \
+        the summary should mention that and suggest potential next steps such as \
+        checking back later if the item becomes available then, consider looking for alternatives \
+        or contacting support.
 
 Respond as a text string.
+"""
+
+FINANCIAL_REPORT_PROMPT = """\
+You are a helpful assistant who can write great financial reports.
+
+Step 1: For the date {request_date}, prepare a financial report using the prepare_financial_report tool
+
+Step 2: Respond as a json:
+- After order_id : {order_id}
+- as_of_date: The date of the report
+- cash_balance: Total cash available
+- inventory_value: Total value of inventory
+- total_assets: Combined cash and inventory value
+
 """
