@@ -13,3 +13,129 @@
   ""inventory_value"": 4940.3,
   ""total_assets"": 49997.0
 }"
+"{
+  ""order_id"": ""ORD-0003"",
+  ""as_of_date"": ""2025-04-04"",
+  ""cash_balance"": 45006.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49947.0
+}"
+"{
+  ""order_id"": ""ORD-0004"",
+  ""as_of_date"": ""2025-04-05"",
+  ""cash_balance"": 44999.2,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49939.5
+}"
+"{
+  ""order_id"": ""ORD-0005"",
+  ""as_of_date"": ""2025-04-05"",
+  ""cash_balance"": 44999.2,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49939.5
+}"
+"{
+  ""order_id"": ""ORD-0006"",
+  ""as_of_date"": ""2025-04-06"",
+  ""cash_balance"": 45020.2,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49960.5
+}"
+"{
+  ""order_id"": ""ORD-0007"",
+  ""as_of_date"": ""2025-04-07"",
+  ""cash_balance"": 45020.2,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49960.5
+}"
+"{
+  ""order_id"": ""ORD-0008"",
+  ""as_of_date"": ""2025-04-07"",
+  ""cash_balance"": 45020.2,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49960.5
+}"
+"{
+  ""order_id"": ""ORD-0009"",
+  ""as_of_date"": ""2025-04-07"",
+  ""cash_balance"": 45020.2,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49960.5
+}"
+"{
+  ""order_id"": ""ORD-0010"",
+  ""as_of_date"": ""2025-04-08"",
+  ""cash_balance"": 45017.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49958.0
+}"
+"{
+  ""order_id"": ""ORD-0011"",
+  ""as_of_date"": ""2025-04-08"",
+  ""cash_balance"": 45014.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49955.0
+}"
+"{
+  ""order_id"": ""ORD-0012"",
+  ""as_of_date"": ""2025-04-08"",
+  ""cash_balance"": 45014.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49955.0
+}"
+"{
+  ""order_id"": ""ORD-0013"",
+  ""as_of_date"": ""2025-04-08"",
+  ""cash_balance"": 45014.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49955.0
+}"
+"{
+  ""order_id"": ""ORD-0014"",
+  ""as_of_date"": ""2025-04-09"",
+  ""cash_balance"": 45014.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49955.0
+}"
+"{
+  ""order_id"": ""ORD-0015"",
+  ""as_of_date"": ""2025-04-12"",
+  ""cash_balance"": 44914.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49855.0
+}"
+"{
+  ""order_id"": ""ORD-0016"",
+  ""as_of_date"": ""2025-04-13"",
+  ""cash_balance"": 44875.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49816.0
+}"
+"{
+  ""order_id"": ""ORD-0017"",
+  ""as_of_date"": ""2025-04-14"",
+  ""cash_balance"": 44875.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49816.0
+}"
+"{
+  ""order_id"": ""ORD-0018"",
+  ""as_of_date"": ""2025-04-14"",
+  ""cash_balance"": 44875.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49816.0
+}"
+"{
+  ""order_id"": ""ORD-0019"",
+  ""as_of_date"": ""2025-04-15"",
+  ""cash_balance"": 44875.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49816.0
+}"
+"{
+  ""order_id"": ""ORD-0020"",
+  ""as_of_date"": ""2025-04-17"",
+  ""cash_balance"": 44775.7,
+  ""inventory_value"": 4940.3,
+  ""total_assets"": 49716.0
+}"
