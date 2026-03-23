@@ -14,9 +14,6 @@ __pycache__/
 *.py[cod]
 *.pyo
 
-# Test / run outputs
-test_results.csv
-
 # Jupyter
 .ipynb_checkpoints/
 
